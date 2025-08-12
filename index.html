@@ -7,20 +7,36 @@
   <meta name="description" content="Developer portfolio of Blake Mitchell." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=4">
 </head>
+<script>
+  const btn = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('[data-nav]');
+  btn.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    nav.classList.toggle('is-open');
+  });
+</script>
 <body>
   <!-- Sticky translucent header -->
   <header class="site-header">
-    <div class="container nav">
-      <a class="logo" href="#home">BM</a>
-      <nav class="nav-links">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact" class="btn btn--primary">Contact</a>
-      </nav>
-    </div>
-  </header>
+  <div class="container nav">
+    <a class="logo" href="#home">BM</a>
+
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+    </button>
+
+    <nav class="nav-links" data-nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact" class="btn btn--primary">Contact</a>
+    </nav>
+  </div>
+</header>
 
   <main id="home">
     <!-- Hero -->
