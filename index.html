@@ -4,46 +4,110 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Blake Mitchell • Developer</title>
+  <meta name="description" content="Developer portfolio of Blake Mitchell." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- Sticky translucent header -->
   <header class="site-header">
-    <h1>Blake Mitchell</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="container nav">
+      <a class="logo" href="#home">BM</a>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact" class="btn btn--primary">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section id="about">
+  <main id="home">
+    <!-- Hero -->
+    <section class="hero container">
+      <div class="hero__text">
+        <h1>Hi, I’m <span class="accent">Blake</span>.</h1>
+        <p class="lead">Building my way from solid HTML/CSS to full‑stack, AWS, and mobile — one clean project at a time.</p>
+        <div class="cta">
+          <a class="btn btn--primary" href="#contact">Work with me</a>
+          <a class="btn" href="#skills">See my skills</a>
+        </div>
+      </div>
+      <div class="hero__image">
+        <!-- Replace with a photo later -->
+        <img src="https://images.unsplash.com/photo-1526378722484-bd91ca387e72?q=80&w=1200&auto=format&fit=crop" alt="Abstract code setup">
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section container">
       <h2>About Me</h2>
-      <p>I’m learning full-stack development, AWS, mobile apps, and building my complete developer toolbox.</p>
+      <p>I’m a student‑athlete and creator learning web fundamentals first, then moving into full‑stack, AWS, and mobile. I’m also strong in CapCut, Photoshop, and Lightroom.</p>
     </section>
 
-    <section id="skills">
-      <h2>Skills</h2>
-      <ul>
-        <li>Python (basic)</li>
-        <li>HTML (basic)</li>
-        <li>Photoshop, CapCut, Lightroom</li>
-      </ul>
+    <!-- Skills -->
+    <section id="skills" class="section section--alt">
+      <div class="container">
+        <h2>Current Skills</h2>
+        <div class="grid skills">
+          <article class="card">
+            <h3>Web Basics</h3>
+            <ul>
+              <li>HTML5 semantic structure</li>
+              <li>CSS (Flexbox, Grid, responsive)</li>
+              <li>Basic JavaScript (soon: ES6+)</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Programming</h3>
+            <ul>
+              <li>Python fundamentals</li>
+              <li>Git & GitHub (this site!)</li>
+              <li>CLI comfort (macOS)</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Creative</h3>
+            <ul>
+              <li>CapCut (advanced)</li>
+              <li>Photoshop (intermediate)</li>
+              <li>Lightroom (intermediate)</li>
+            </ul>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <section id="contact">
-      <h2>Contact Me</h2>
-      <form>
-        <label>Name: <input type="text" name="name" required></label><br>
-        <label>Email: <input type="email" name="email" required></label><br>
-        <label>Message:<br><textarea name="message" required></textarea></label><br>
-        <button type="submit">Send</button>
+    <!-- Contact -->
+    <section id="contact" class="section container">
+      <h2>Contact</h2>
+      <form class="form">
+        <div class="form__row">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" required />
+        </div>
+        <div class="form__row">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+        </div>
+        <div class="form__row">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="How can I help?" required></textarea>
+        </div>
+        <button class="btn btn--primary" type="submit">Send</button>
       </form>
     </section>
   </main>
 
-  <footer>
-    <p>© 2025 Blake Mitchell</p>
+  <footer class="site-footer">
+    <div class="container">
+      <small>© <span id="year"></span> Blake Mitchell • Built with pure HTML/CSS</small>
+    </div>
   </footer>
+
+  <script>
+    // Update footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

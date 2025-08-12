@@ -1,61 +1,106 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background-color: #0b0b10;
-  color: white;
+/* Smooth scrolling + modern defaults */
+html { scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; }
+:root{
+  --bg: #0b0b10;
+  --bg-alt: #121219;
+  --text: #e9ecf1;
+  --muted: #a9b0bd;
+  --primary: #7c5cff;
+  --primary-600: #6a47ff;
+  --card: #171722;
+  --border: #232335;
+  --radius: 16px;
 }
 
-header {
-  background-color: #121219;
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+html, body { height: 100%; }
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--text);
+  background:linear-gradient(180deg, #0b0b10 0%, #0e0e14 100%);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
 }
 
-header h1 {
-  margin: 0;
+img{ max-width:100%; display:block; border-radius:12px; }
+a{ color:inherit; text-decoration:none; }
+.container{ width:min(1100px, 92%); margin-inline:auto; }
+
+/* Header */
+.site-header{
+  position: sticky; top: 0; z-index: 50;
+  backdrop-filter: saturate(1.2) blur(10px);
+  background: rgba(11,11,16,0.55);
+  border-bottom: 1px solid var(--border);
+}
+.nav{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 0;
+}
+.logo{
+  font-weight:800; letter-spacing:0.5px; padding:8px 12px; border-radius:10px;
+  background:linear-gradient(135deg, var(--primary), #42b3ff); color:white;
+}
+.nav-links a{
+  margin-left:16px; padding:8px 10px; color:var(--muted);
+  border-radius:10px;
+}
+.nav-links a:hover{ color:var(--text); background:rgba(255,255,255,0.04); }
+
+/* Buttons */
+.btn{
+  display:inline-block; padding:10px 14px; border-radius:12px; border:1px solid var(--border);
+  transition:transform .15s ease, background .15s ease, border-color .15s ease, opacity .15s;
+  background:transparent;
+}
+.btn:hover{ transform:translateY(-1px); border-color:#2f2f43; }
+.btn--primary{
+  background:linear-gradient(135deg, var(--primary), #42b3ff);
+  color:#0c0c14; font-weight:700; border:none;
 }
 
-header nav a {
-  color: #a9b0bd;
-  margin-left: 1rem;
-  text-decoration: none;
+/* Hero */
+.hero{
+  display:grid; grid-template-columns:1.1fr .9fr; gap:28px; align-items:center;
+  padding:56px 0 28px;
 }
+.hero__text h1{ font-size: clamp(2rem, 3.5vw, 3.25rem); margin:0 0 10px; }
+.accent{ background:linear-gradient(135deg, var(--primary), #42b3ff); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.lead{ color:var(--muted); line-height:1.6; margin:0 0 18px; }
+.cta .btn{ margin-right:10px; }
 
-header nav a:hover {
-  color: white;
+/* Sections */
+.section{ padding:56px 0; }
+.section--alt{ background:var(--bg-alt); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+.section h2{ font-size: clamp(1.4rem, 2.4vw, 2rem); margin:0 0 16px; }
+
+.grid.skills{
+  display:grid; grid-template-columns: repeat(3, 1fr); gap:18px;
 }
-
-main {
-  padding: 1.5rem;
+.card{
+  background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+  padding:18px;
 }
+.card h3{ margin-top:0; }
+.card ul{ margin:0; padding-left:18px; color:var(--muted); }
 
-section {
-  margin-bottom: 2rem;
+/* Form */
+.form{ max-width:680px; }
+.form__row{ display:flex; flex-direction:column; margin-bottom:12px; }
+input, textarea{
+  background:#0f0f16; color:var(--text); border:1px solid var(--border);
+  padding:12px 14px; border-radius:12px; outline:none;
 }
+input:focus, textarea:focus{ border-color:#2e2e44; }
 
-form input, form textarea {
-  width: 100%;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-  padding: 0.5rem;
-}`
+/* Footer */
+.site-footer{ border-top:1px solid var(--border); padding:24px 0; color:var(--muted); }
 
-button {
-  background-color: #7c5cff;
-  color: white;
-  border: none;
-  padding: 0.7rem 1rem;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #6a47ff;
-}
-
-footer {
-  background-color: #121219;
-  text-align: center;
-  padding: 1rem;
+/* Responsive */
+@media (max-width: 900px){
+  .hero{ grid-template-columns:1fr; }
+  .hero__image{ order:-1; }
+  .grid.skills{ grid-template-columns:1fr; }
+  .nav-links a{ margin-left:8px; }
 }
