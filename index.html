@@ -8,6 +8,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=6">
+  <link rel="icon" href="/favicon.png" sizes="any">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <meta property="og:title" content="Blake Mitchell • Developer">
+  <meta property="og:description" content="Student‑athlete building full‑stack, AWS, and mobile projects.">
+  <meta property="og:image" content="https://blakemitchell.netlify.app/og-image.png">
+  <meta property="og:url" content="https://blakemitchell.netlify.app/">
+  <meta name="twitter:card" content="summary_large_image">
 </head>
 <script>
   const btn = document.querySelector('.nav-toggle');
@@ -118,6 +125,35 @@
             </ul>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section container">
+      <h2>Projects</h2>
+      <div class="grid projects">
+        <article class="card project">
+          <img src="images/project-1-placeholder.webp" alt="Project 1 preview" width="1200" height="800">
+          <div class="project__body">
+            <h3>Mini Portfolio</h3>
+            <p>A responsive starter site with sticky header, animated hero, and Netlify Forms.</p>
+            <div class="project__actions">
+              <a class="btn" href="https://YOUR_NETLIFY_URL" target="_blank" rel="noopener">Live</a>
+              <a class="btn" href="https://github.com/BlakeMitchell-GitHub/portfolio-day1" target="_blank" rel="noopener">Code</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Duplicate this article as you add more projects -->
+        <article class="card project">
+          <img src="images/project-2-placeholder.webp" alt="Project 2 preview" width="1200" height="800">
+          <div class="project__body">
+            <h3>Next: JS Utilities</h3>
+            <p>A tiny utilities repo (debounce, throttle, fetch wrapper) to level up JS basics.</p>
+            <div class="project__actions">
+              <a class="btn" href="#" aria-disabled="true">Coming soon</a>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
