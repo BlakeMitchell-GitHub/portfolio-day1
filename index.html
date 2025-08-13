@@ -7,7 +7,7 @@
   <meta name="description" content="Developer portfolio of Blake Mitchell." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=4">
+  <link rel="stylesheet" href="styles.css?v=6">
 </head>
 <script>
   const btn = document.querySelector('.nav-toggle');
@@ -50,8 +50,35 @@
         </div>
       </div>
       <div class="hero__image">
-        <!-- Replace with a photo later -->
-        <img src="https://images.unsplash.com/photo-1526378722484-bd91ca387e72?q=80&w=1200&auto=format&fit=crop" alt="Abstract code setup">
+        <figure class="carousel" aria-label="Photo carousel">
+          <!-- Slide 1 -->
+          <img
+            class="carousel__slide is-active"
+            src="images/7A770789-8FFB-4B1C-9A25-BC244C5F2B1F_1_105_c.jpeg"
+            alt="Gallery image 1"
+            width="1600" height="1000"
+            loading="eager" decoding="async"
+          />
+          <!-- Slide 2 -->
+          <img
+            class="carousel__slide"
+            src="images/7CBDA0D3-0AD9-4952-A653-50F5DEB455D1.jpeg"
+            alt="Gallery image 2"
+            width="1600" height="1000"
+            loading="lazy" decoding="async"
+          />
+          <!-- Slide 3 -->
+          <img
+            class="carousel__slide"
+            src="images/29D897F1-CB3B-4ED0-92C7-FFF87E549C6C_1_201_a.jpeg"
+            alt="Gallery image 3"
+            width="1600" height="1000"
+            loading="lazy" decoding="async"
+          />
+
+          <!-- (optional) progress ring -->
+          <div class="carousel__progress" aria-hidden="true"></div>
+        </figure>
       </div>
     </section>
 
@@ -138,5 +165,40 @@
     // Update footer year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+
+  <script>
+  (function () {
+    const container = document.querySelector('.carousel');
+    if (!container) return;
+
+    const slides = [...container.querySelectorAll('.carousel__slide')];
+    let i = 0;
+    const INTERVAL = 5000; // ms
+    container.style.setProperty('--carousel-interval', INTERVAL + 'ms');
+
+    let timer = null;
+    const set = (idx) => {
+      slides.forEach((el, j) => el.classList.toggle('is-active', j === idx));
+    };
+    const next = () => { i = (i + 1) % slides.length; set(i); };
+
+    const start = () => { stop(); timer = setInterval(next, INTERVAL); };
+    const stop  = () => { if (timer) clearInterval(timer); timer = null; };
+
+    // Pause when hovering so users can look at a photo
+    container.addEventListener('mouseenter', stop);
+    container.addEventListener('mouseleave', start);
+
+    // Pause when tab is hidden (saves battery & syncs progress bar)
+    document.addEventListener('visibilitychange', () => {
+      document.hidden ? stop() : start();
+    });
+
+    // Kick off
+    set(0);
+    start();
+  })();
+</script>
+
 </body>
 </html>
